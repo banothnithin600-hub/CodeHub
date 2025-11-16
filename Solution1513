@@ -1,17 +1,23 @@
 class Solution {
-    static int mod = 1000000007;
-    public int numSub(String s) {
-        int j=0; int n = s.length(); long cnt = 0; long ans = 0;
-        while(j < n){
-            if(s.charAt(j) == '1'){
+public:
+    static const int mod = 1000000007; // Use const for constant values
+
+    int numSub(string s) {
+        int j = 0; 
+        int n = s.length(); 
+        long cnt = 0; 
+        long ans = 0;
+
+        while (j < n) {
+            if (s[j] == '1') {
                 cnt++;
             } else {
-                ans = (ans + (cnt) * (cnt+1)/2) % mod;
+                ans = (ans + (cnt * (cnt + 1) / 2)) % mod;
                 cnt = 0;
             }
             j++;
         }
-        ans = (ans + cnt*(cnt+1)/2) % mod;
+        ans = (ans + (cnt * (cnt + 1) / 2)) % mod;
         return (int)ans;
     }
-}
+};
